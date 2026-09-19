@@ -22,7 +22,7 @@ This catalog fragmentation leads to:
 **EkMat** solves this by acting as an intelligent, governed entity resolution and harmonization platform. It reads master records across disparate CPSE ERP systems, identifies duplicate and equivalent materials through a transparent multi-signal AI engine, mints an authoritative **Common National Material Code**, and preserves 100% backward traceability to all original legacy codes—all through a strictly audited, human-approved workflow.
 
 > 📖 **In-Depth Roadmap & Architecture Whitepaper:**  
-> For the comprehensive executive and technical breakdown on scaling this prototype to millions of records across 50+ CPSEs (including SAP RFC/BAPI connectors, Kafka event streaming, DPDP Act compliance, and GeM integration), see **[`REAL_WORLD_IMPLEMENTATION_ROADMAP.md`](./REAL_WORLD_IMPLEMENTATION_ROADMAP.md)**.
+> For the comprehensive executive and technical breakdown on scaling this prototype to millions of records across 50+ CPSEs (including SAP RFC/BAPI connectors, Kafka event streaming, DPDP Act compliance, and GeM integration), see **[`ENTERPRISE_ARCHITECTURE_AND_ROADMAP.md`](./ENTERPRISE_ARCHITECTURE_AND_ROADMAP.md)**.
 
 ---
 
@@ -161,8 +161,8 @@ python -m pytest backend/tests/ -v
 
 ```
 EkMat/
-├── REAL_WORLD_IMPLEMENTATION_ROADMAP.md # Enterprise whitepaper & production scaling roadmap
-├── README.md                            # Main project overview & quickstart
+├── ENTERPRISE_ARCHITECTURE_AND_ROADMAP.md # Enterprise whitepaper & production scaling blueprint
+├── README.md                              # Main project overview & quickstart
 ├── docker-compose.yml                   # 4-tier stack container orchestrator
 ├── backend/
 │   ├── Dockerfile
