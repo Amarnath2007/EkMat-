@@ -103,26 +103,26 @@ export default function MaterialMaster() {
   return (
     <div className="space-y-6 animate-fadeIn">
       {/* Header & Sub-tab Switcher */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 glass-panel p-4 rounded-2xl border border-slate-800">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-slate-200 shadow-xs">
         <div>
-          <h2 className="text-xl font-bold text-white font-['Outfit'] flex items-center space-x-2">
-            <Database className="w-5 h-5 text-blue-400" />
+          <h2 className="text-xl font-bold text-slate-900 font-['Outfit'] flex items-center space-x-2">
+            <Database className="w-5 h-5 text-blue-600" />
             <span>National Material Master Catalog</span>
           </h2>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-slate-500">
             Harmonized golden record repository maintaining full backward traceability to all CPSE source codes.
           </p>
         </div>
 
         <div className="flex items-center space-x-3">
           {/* Sub Tab Buttons */}
-          <div className="flex items-center bg-slate-900 border border-slate-700/80 rounded-xl p-0.5 text-xs">
+          <div className="flex items-center bg-slate-100 border border-slate-200 rounded-xl p-0.5 text-xs">
             <button
               onClick={() => setActiveSubTab('harmonized')}
               className={`px-3 py-1.5 rounded-lg font-semibold transition-all ${
                 activeSubTab === 'harmonized'
-                  ? 'bg-blue-600 text-white shadow-sm'
-                  : 'text-slate-400 hover:text-slate-200'
+                  ? 'bg-white text-blue-700 shadow-xs'
+                  : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               Harmonized National Master
@@ -131,8 +131,8 @@ export default function MaterialMaster() {
               onClick={() => setActiveSubTab('all_materials')}
               className={`px-3 py-1.5 rounded-lg font-semibold transition-all ${
                 activeSubTab === 'all_materials'
-                  ? 'bg-blue-600 text-white shadow-sm'
-                  : 'text-slate-400 hover:text-slate-200'
+                  ? 'bg-white text-blue-700 shadow-xs'
+                  : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               Raw CPSE Master Records
@@ -142,10 +142,10 @@ export default function MaterialMaster() {
           {activeSubTab === 'harmonized' && (
             <button
               onClick={exportHarmonizedCSV}
-              className="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 text-xs font-semibold transition-colors"
+              className="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 text-xs font-semibold transition-colors shadow-xs"
               title="Export Harmonized Master to CSV"
             >
-              <Download className="w-3.5 h-3.5 text-emerald-400" />
+              <Download className="w-3.5 h-3.5 text-emerald-600" />
               <span className="hidden sm:inline">Export CSV</span>
             </button>
           )}
@@ -153,22 +153,22 @@ export default function MaterialMaster() {
       </div>
 
       {/* Filter & Search Bar */}
-      <form onSubmit={handleSearchSubmit} className="glass-panel p-4 rounded-2xl border border-slate-800 flex flex-wrap items-center gap-3 text-xs">
+      <form onSubmit={handleSearchSubmit} className="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs flex flex-wrap items-center gap-3 text-xs">
         <div className="flex-1 min-w-[240px] relative">
-          <Search className="w-3.5 h-3.5 text-slate-500 absolute left-3 top-3" />
+          <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-3" />
           <input
             type="text"
             placeholder="Search by code, equipment description, standard, material..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full bg-slate-900 border border-slate-700/80 rounded-xl pl-9 pr-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-blue-500"
+            className="w-full bg-white border border-slate-200 rounded-xl pl-9 pr-3 py-2 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-blue-500 shadow-xs"
           />
         </div>
 
         <select
           value={categoryFilter}
           onChange={(e) => setCategoryFilter(e.target.value)}
-          className="bg-slate-900 border border-slate-700/80 text-slate-300 rounded-xl px-3 py-2 focus:outline-none focus:border-blue-500"
+          className="bg-white border border-slate-200 text-slate-700 rounded-xl px-3 py-2 focus:outline-none focus:border-blue-500 font-medium"
         >
           <option value="">All Categories</option>
           <option value="VALVE">VALVE</option>
@@ -182,7 +182,7 @@ export default function MaterialMaster() {
             <select
               value={cpseFilter}
               onChange={(e) => setCpseFilter(e.target.value)}
-              className="bg-slate-900 border border-slate-700/80 text-slate-300 rounded-xl px-3 py-2 focus:outline-none focus:border-blue-500"
+              className="bg-white border border-slate-200 text-slate-700 rounded-xl px-3 py-2 focus:outline-none focus:border-blue-500 font-medium"
             >
               <option value="">All CPSEs</option>
               <option value="BHEL">BHEL</option>
@@ -195,7 +195,7 @@ export default function MaterialMaster() {
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="bg-slate-900 border border-slate-700/80 text-slate-300 rounded-xl px-3 py-2 focus:outline-none focus:border-blue-500"
+              className="bg-white border border-slate-200 text-slate-700 rounded-xl px-3 py-2 focus:outline-none focus:border-blue-500 font-medium"
             >
               <option value="">All Mapping Status</option>
               <option value="MAPPED">Harmonized (Mapped)</option>
@@ -206,7 +206,7 @@ export default function MaterialMaster() {
 
         <button
           type="submit"
-          className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-xl font-semibold transition-colors shadow-sm"
+          className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold transition-colors shadow-xs"
         >
           Apply Filters
         </button>
@@ -216,22 +216,22 @@ export default function MaterialMaster() {
       {activeSubTab === 'harmonized' && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
           {/* List (5 cols) */}
-          <div className="lg:col-span-5 glass-panel rounded-2xl border border-slate-800 overflow-hidden flex flex-col h-[70vh]">
-            <div className="p-3 border-b border-slate-800 bg-slate-950/40 text-xs font-semibold text-slate-400 flex justify-between">
+          <div className="lg:col-span-5 bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden flex flex-col h-[70vh]">
+            <div className="p-3 border-b border-slate-200 bg-slate-50 text-xs font-semibold text-slate-600 flex justify-between">
               <span>Standardized Master Entries ({commonMaterials.length})</span>
               <span>Click to view legacy mappings</span>
             </div>
 
-            <div className="overflow-y-auto divide-y divide-slate-800/60 flex-1">
+            <div className="overflow-y-auto divide-y divide-slate-100 flex-1">
               {loading ? (
-                <div className="p-8 text-center text-xs text-slate-400 flex flex-col items-center space-y-2">
-                  <RefreshCw className="w-5 h-5 animate-spin text-blue-400" />
+                <div className="p-8 text-center text-xs text-slate-500 flex flex-col items-center space-y-2">
+                  <RefreshCw className="w-5 h-5 animate-spin text-blue-600" />
                   <span>Loading Harmonized Master...</span>
                 </div>
               ) : commonMaterials.length === 0 ? (
                 <div className="p-8 text-center text-xs text-slate-500 space-y-2">
                   <span>No approved harmonized codes yet.</span>
-                  <span className="block text-[11px] text-slate-600">
+                  <span className="block text-[11px] text-slate-400">
                     Go to Match Review and approve candidate clusters to generate Common National Codes.
                   </span>
                 </div>
@@ -244,19 +244,19 @@ export default function MaterialMaster() {
                       onClick={() => loadCommonDetail(c.id)}
                       className={`p-3.5 cursor-pointer transition-all ${
                         isSelected
-                          ? 'bg-blue-600/15 border-l-4 border-blue-500 text-white'
-                          : 'hover:bg-slate-800/40 text-slate-300'
+                          ? 'bg-blue-50/80 border-l-4 border-blue-600 text-slate-900'
+                          : 'hover:bg-slate-50 text-slate-700'
                       }`}
                     >
                       <div className="flex items-center justify-between mb-1">
-                        <span className="text-xs font-mono font-bold text-blue-300">
+                        <span className="text-xs font-mono font-bold text-blue-700">
                           {c.common_code}
                         </span>
-                        <span className="text-[10px] px-1.5 py-0.2 rounded bg-emerald-950 text-emerald-300 border border-emerald-800/60 font-semibold">
+                        <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">
                           {c.mapped_count} Mapped CPSEs
                         </span>
                       </div>
-                      <p className="text-xs text-slate-200 line-clamp-2 mb-1.5 font-medium">
+                      <p className="text-xs text-slate-800 line-clamp-2 mb-1.5 font-semibold">
                         {c.standardized_description}
                       </p>
                       <div className="text-[10px] text-slate-500 flex justify-between">
@@ -271,41 +271,41 @@ export default function MaterialMaster() {
           </div>
 
           {/* Right Panel: Detail with All Mapped CPSE Records (7 cols) */}
-          <div className="lg:col-span-7 glass-panel rounded-2xl border border-slate-800 overflow-hidden flex flex-col h-[70vh]">
+          <div className="lg:col-span-7 bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden flex flex-col h-[70vh]">
             {!selectedCM ? (
-              <div className="flex flex-col items-center justify-center h-full text-slate-500 space-y-2">
+              <div className="flex flex-col items-center justify-center h-full text-slate-400 space-y-2">
                 <Database className="w-10 h-10 stroke-1" />
                 <span className="text-xs">Select a Common National Material Code to inspect legacy mappings</span>
               </div>
             ) : (
               <div className="flex flex-col h-full overflow-hidden">
                 {/* Header */}
-                <div className="p-5 border-b border-slate-800 bg-slate-950/60 space-y-2">
+                <div className="p-5 border-b border-slate-200 bg-slate-50 space-y-2">
                   <div className="flex items-center justify-between">
-                    <span className="text-base font-mono font-bold text-blue-300 bg-slate-900 px-2.5 py-1 rounded-lg border border-blue-500/30 select-all">
+                    <span className="text-base font-mono font-bold text-blue-700 bg-white px-2.5 py-1 rounded-lg border border-blue-200 select-all shadow-xs">
                       {selectedCM.common_code}
                     </span>
-                    <span className="text-xs px-2.5 py-0.5 rounded-full bg-emerald-950 text-emerald-300 border border-emerald-600/40 font-semibold flex items-center">
+                    <span className="text-xs px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold flex items-center">
                       <CheckCircle className="w-3.5 h-3.5 mr-1" />
                       Active Harmonized Code
                     </span>
                   </div>
 
-                  <h3 className="text-sm font-bold text-white leading-snug">
+                  <h3 className="text-sm font-bold text-slate-900 leading-snug">
                     {selectedCM.standardized_description}
                   </h3>
 
-                  <div className="text-xs text-slate-400 flex items-center space-x-4 pt-1">
-                    <span>Category: <strong className="text-slate-200">{selectedCM.category}</strong></span>
-                    <span>Mapped Enterprises: <strong className="text-emerald-400">{selectedCM.mapped_count} CPSEs</strong></span>
+                  <div className="text-xs text-slate-500 flex items-center space-x-4 pt-1">
+                    <span>Category: <strong className="text-slate-800">{selectedCM.category}</strong></span>
+                    <span>Mapped Enterprises: <strong className="text-emerald-700">{selectedCM.mapped_count} CPSEs</strong></span>
                   </div>
                 </div>
 
                 {/* Table of Mapped CPSE Records */}
                 <div className="p-5 overflow-y-auto space-y-4 flex-1">
                   <div className="flex items-center justify-between">
-                    <h4 className="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center">
-                      <Building className="w-3.5 h-3.5 mr-1.5 text-blue-400" />
+                    <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center">
+                      <Building className="w-3.5 h-3.5 mr-1.5 text-blue-600" />
                       Mapped Legacy CPSE Records ({selectedCM.mappings?.length || 0})
                     </h4>
                     <span className="text-[10px] text-slate-500">
@@ -313,32 +313,32 @@ export default function MaterialMaster() {
                     </span>
                   </div>
 
-                  <div className="border border-slate-800 rounded-xl overflow-hidden bg-slate-950/60">
+                  <div className="border border-slate-200 rounded-xl overflow-hidden bg-white shadow-xs">
                     <table className="w-full text-left border-collapse text-xs">
                       <thead>
-                        <tr className="border-b border-slate-800 bg-slate-900/60 text-slate-400 font-semibold text-[11px]">
+                        <tr className="border-b border-slate-200 bg-slate-50 text-slate-600 font-semibold text-[11px]">
                           <th className="py-2.5 px-3">CPSE Entity</th>
                           <th className="py-2.5 px-3">Original CPSE Code</th>
                           <th className="py-2.5 px-4">CPSE Legacy Description</th>
                           <th className="py-2.5 px-3">Unit</th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-slate-800/60">
+                      <tbody className="divide-y divide-slate-100">
                         {selectedCM.mappings?.map((m) => (
-                          <tr key={m.id} className="hover:bg-slate-800/30 transition-colors">
+                          <tr key={m.id} className="hover:bg-slate-50/70 transition-colors">
                             <td className="py-2.5 px-3">
-                              <span className="inline-block px-1.5 py-0.5 rounded bg-slate-800 text-blue-400 font-mono text-[10px] font-bold">
+                              <span className="inline-block px-1.5 py-0.5 rounded bg-slate-100 text-blue-700 font-mono text-[10px] font-bold">
                                 {m.cpse_code}
                               </span>
-                              <span className="text-[10px] text-slate-500 block">{m.erp_system}</span>
+                              <span className="text-[10px] text-slate-500 block font-medium">{m.erp_system}</span>
                             </td>
-                            <td className="py-2.5 px-3 font-mono font-bold text-amber-300 select-all">
+                            <td className="py-2.5 px-3 font-mono font-bold text-amber-800 select-all">
                               {m.material_code}
                             </td>
-                            <td className="py-2.5 px-4 text-slate-300 font-medium">
+                            <td className="py-2.5 px-4 text-slate-800 font-medium">
                               {m.raw_description}
                             </td>
-                            <td className="py-2.5 px-3 font-semibold text-slate-400 uppercase">
+                            <td className="py-2.5 px-3 font-semibold text-slate-600 uppercase">
                               {m.unit_of_measure}
                             </td>
                           </tr>
@@ -355,11 +355,11 @@ export default function MaterialMaster() {
 
       {/* Sub Tab 2: Raw CPSE Master Records */}
       {activeSubTab === 'all_materials' && (
-        <div className="glass-panel rounded-2xl border border-slate-800 overflow-hidden space-y-4">
+        <div className="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden space-y-4">
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse text-xs">
               <thead>
-                <tr className="border-b border-slate-800 bg-slate-950/60 text-slate-400 font-semibold text-[11px]">
+                <tr className="border-b border-slate-200 bg-slate-50 text-slate-600 font-semibold text-[11px]">
                   <th className="py-3 px-4">CPSE</th>
                   <th className="py-3 px-3">Original Code</th>
                   <th className="py-3 px-3">Category</th>
@@ -368,37 +368,37 @@ export default function MaterialMaster() {
                   <th className="py-3 px-4">Harmonized Status</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/60">
+              <tbody className="divide-y divide-slate-100">
                 {rawMaterials.map((m) => (
-                  <tr key={m.id} className="hover:bg-slate-800/30 transition-colors">
+                  <tr key={m.id} className="hover:bg-slate-50/70 transition-colors">
                     <td className="py-3 px-4">
-                      <span className="inline-block px-2 py-0.5 rounded bg-slate-800 font-mono text-blue-400 font-bold">
+                      <span className="inline-block px-2 py-0.5 rounded bg-slate-100 font-mono text-blue-700 font-bold">
                         {m.cpse_code}
                       </span>
-                      <span className="text-[10px] text-slate-500 block">{m.erp_system}</span>
+                      <span className="text-[10px] text-slate-500 block font-medium">{m.erp_system}</span>
                     </td>
-                    <td className="py-3 px-3 font-mono font-bold text-amber-300/90 select-all">
+                    <td className="py-3 px-3 font-mono font-bold text-amber-800 select-all">
                       {m.original_code}
                     </td>
-                    <td className="py-3 px-3 font-semibold text-slate-300">
+                    <td className="py-3 px-3 font-semibold text-slate-700">
                       {m.category}
                     </td>
-                    <td className="py-3 px-5 text-slate-200">
-                      <div>{m.raw_description}</div>
+                    <td className="py-3 px-5 text-slate-800">
+                      <div className="font-medium">{m.raw_description}</div>
                       {m.raw_specification && (
-                        <span className="text-[10px] text-slate-400 block">{m.raw_specification}</span>
+                        <span className="text-[10px] text-slate-500 block">{m.raw_specification}</span>
                       )}
                     </td>
-                    <td className="py-3 px-3 font-semibold text-slate-400 uppercase">
+                    <td className="py-3 px-3 font-semibold text-slate-600 uppercase">
                       {m.unit_of_measure}
                     </td>
                     <td className="py-3 px-4">
                       {m.common_code ? (
-                        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-950 text-emerald-300 border border-emerald-800/60">
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
                           {m.common_code}
                         </span>
                       ) : (
-                        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-slate-800 text-slate-400">
+                        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-slate-100 text-slate-600">
                           Unmapped
                         </span>
                       )}
@@ -410,21 +410,21 @@ export default function MaterialMaster() {
           </div>
 
           {/* Pagination Controls */}
-          <div className="flex items-center justify-between p-4 border-t border-slate-800 text-xs text-slate-400">
+          <div className="flex items-center justify-between p-4 border-t border-slate-200 text-xs text-slate-500 bg-slate-50/50">
             <span>Showing {rawMaterials.length} of {rawTotal} Total CPSE Master Items</span>
             <div className="flex items-center space-x-2">
               <button
                 disabled={rawPage <= 1}
                 onClick={() => setRawPage((p) => Math.max(1, p - 1))}
-                className="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed shadow-xs"
               >
                 Previous
               </button>
-              <span className="font-semibold text-white px-2">Page {rawPage}</span>
+              <span className="font-semibold text-slate-800 px-2">Page {rawPage}</span>
               <button
                 disabled={rawMaterials.length < 15}
                 onClick={() => setRawPage((p) => p + 1)}
-                className="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed shadow-xs"
               >
                 Next
               </button>

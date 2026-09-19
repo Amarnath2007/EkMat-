@@ -117,13 +117,13 @@ export default function MatchReview() {
   return (
     <div className="space-y-6 animate-fadeIn">
       {/* Top Header & Filter Controls */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 glass-panel p-4 rounded-2xl border border-slate-800">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-slate-200 shadow-xs">
         <div>
-          <h2 className="text-xl font-bold text-white font-['Outfit'] flex items-center space-x-2">
-            <GitMerge className="w-5 h-5 text-blue-400" />
+          <h2 className="text-xl font-bold text-slate-900 font-['Outfit'] flex items-center space-x-2">
+            <GitMerge className="w-5 h-5 text-blue-600" />
             <span>Human Validation & Approval Workflow</span>
           </h2>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-slate-500">
             Review candidate equivalent materials, inspect multi-signal scoring, and authorize Common National Codes.
           </p>
         </div>
@@ -131,15 +131,15 @@ export default function MatchReview() {
         {/* Filters */}
         <div className="flex flex-wrap items-center gap-2 text-xs">
           {/* Status Filter */}
-          <div className="flex items-center bg-slate-900 border border-slate-700/80 rounded-xl p-0.5">
+          <div className="flex items-center bg-slate-100 border border-slate-200 rounded-xl p-0.5">
             {['PENDING', 'APPROVED', 'REJECTED', ''].map((st) => (
               <button
                 key={st || 'ALL'}
                 onClick={() => setFilterStatus(st)}
                 className={`px-3 py-1.5 rounded-lg font-medium transition-all ${
                   filterStatus === st
-                    ? 'bg-blue-600 text-white shadow-sm'
-                    : 'text-slate-400 hover:text-slate-200'
+                    ? 'bg-white text-blue-700 shadow-xs font-semibold'
+                    : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
                 {st || 'ALL STATUS'}
@@ -151,7 +151,7 @@ export default function MatchReview() {
           <select
             value={filterBand}
             onChange={(e) => setFilterBand(e.target.value)}
-            className="bg-slate-900 border border-slate-700/80 text-slate-300 rounded-xl px-3 py-1.5 focus:outline-none focus:border-blue-500"
+            className="bg-white border border-slate-200 text-slate-700 rounded-xl px-3 py-1.5 focus:outline-none focus:border-blue-500 font-medium"
           >
             <option value="">All Confidence Bands</option>
             <option value="HIGH">High (&gt;90%)</option>
@@ -161,7 +161,7 @@ export default function MatchReview() {
 
           <button
             onClick={fetchMatches}
-            className="p-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 border border-slate-700 transition-colors"
+            className="p-2 rounded-xl bg-white text-slate-600 hover:text-slate-900 hover:bg-slate-50 border border-slate-200 transition-colors shadow-xs"
             title="Refresh candidate clusters"
           >
             <RefreshCw className="w-3.5 h-3.5" />
@@ -172,28 +172,28 @@ export default function MatchReview() {
       {/* Main Split Interface */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         {/* Left Column: Cluster List (4 cols) */}
-        <div className="lg:col-span-4 glass-panel rounded-2xl border border-slate-800 overflow-hidden flex flex-col h-[75vh]">
+        <div className="lg:col-span-4 bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden flex flex-col h-[75vh]">
           {/* Search bar */}
-          <div className="p-3 border-b border-slate-800 bg-slate-950/40 relative">
-            <Search className="w-3.5 h-3.5 text-slate-500 absolute left-6 top-5" />
+          <div className="p-3 border-b border-slate-200 bg-slate-50 relative">
+            <Search className="w-3.5 h-3.5 text-slate-400 absolute left-6 top-5" />
             <input
               type="text"
               placeholder="Search clusters, equipment, codes..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-slate-900 border border-slate-700/80 rounded-xl pl-8 pr-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-blue-500"
+              className="w-full bg-white border border-slate-200 rounded-xl pl-8 pr-3 py-1.5 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-blue-500 shadow-xs"
             />
           </div>
 
           {/* List Content */}
-          <div className="overflow-y-auto divide-y divide-slate-800/60 flex-1">
+          <div className="overflow-y-auto divide-y divide-slate-100 flex-1">
             {loading ? (
-              <div className="p-8 text-center text-xs text-slate-400 flex flex-col items-center space-y-2">
-                <RefreshCw className="w-5 h-5 animate-spin text-blue-400" />
+              <div className="p-8 text-center text-xs text-slate-500 flex flex-col items-center space-y-2">
+                <RefreshCw className="w-5 h-5 animate-spin text-blue-600" />
                 <span>Loading Candidate Clusters...</span>
               </div>
             ) : filteredMatches.length === 0 ? (
-              <div className="p-8 text-center text-xs text-slate-500 space-y-2">
+              <div className="p-8 text-center text-xs text-slate-400 space-y-2">
                 <span>No candidate clusters found matching filters.</span>
               </div>
             ) : (
@@ -205,26 +205,26 @@ export default function MatchReview() {
                     onClick={() => setSelectedId(m.id)}
                     className={`p-3.5 cursor-pointer transition-all ${
                       isSelected
-                        ? 'bg-blue-600/15 border-l-4 border-blue-500 text-white'
-                        : 'hover:bg-slate-800/40 text-slate-300'
+                        ? 'bg-blue-50/80 border-l-4 border-blue-600 text-slate-900'
+                        : 'hover:bg-slate-50 text-slate-700'
                     }`}
                   >
                     <div className="flex items-center justify-between mb-1.5">
-                      <span className="text-[11px] font-mono font-bold text-blue-300 truncate max-w-[170px]">
+                      <span className="text-[11px] font-mono font-bold text-blue-700 truncate max-w-[170px]">
                         {m.suggested_common_code}
                       </span>
                       <StatusBadge status={m.confidence_band} type="confidence" />
                     </div>
 
-                    <p className="text-xs font-medium line-clamp-2 text-slate-200 mb-2">
+                    <p className="text-xs font-semibold line-clamp-2 text-slate-800 mb-2">
                       {m.suggested_description}
                     </p>
 
-                    <div className="flex items-center justify-between text-[10px] text-slate-400 pt-1 border-t border-slate-800/40">
-                      <span className="font-semibold text-slate-300">
+                    <div className="flex items-center justify-between text-[10px] text-slate-500 pt-1.5 border-t border-slate-100">
+                      <span className="font-semibold text-slate-600">
                         {m.member_count} CPSE Records
                       </span>
-                      <span className="font-bold text-slate-200">
+                      <span className="font-bold text-slate-800">
                         {Math.round(m.weighted_score * 100)}% Score
                       </span>
                     </div>
@@ -236,30 +236,30 @@ export default function MatchReview() {
         </div>
 
         {/* Right Column: Deep Inspection & Action Panel (8 cols) */}
-        <div className="lg:col-span-8 glass-panel rounded-2xl border border-slate-800 overflow-hidden flex flex-col h-[75vh]">
+        <div className="lg:col-span-8 bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden flex flex-col h-[75vh]">
           {detailLoading ? (
             <div className="flex flex-col items-center justify-center h-full space-y-3">
-              <RefreshCw className="w-8 h-8 text-blue-400 animate-spin" />
-              <span className="text-xs text-slate-400">Loading Cluster Detail & Signal Breakdown...</span>
+              <RefreshCw className="w-8 h-8 text-blue-600 animate-spin" />
+              <span className="text-xs text-slate-500">Loading Cluster Detail & Signal Breakdown...</span>
             </div>
           ) : !selectedMatch ? (
-            <div className="flex flex-col items-center justify-center h-full text-slate-500 space-y-2">
+            <div className="flex flex-col items-center justify-center h-full text-slate-400 space-y-2">
               <GitMerge className="w-12 h-12 stroke-1" />
               <span className="text-sm">Select a candidate cluster from the left panel to review</span>
             </div>
           ) : (
             <div className="flex flex-col h-full overflow-hidden">
               {/* Selected Cluster Header */}
-              <div className="p-4 sm:p-5 border-b border-slate-800 bg-slate-950/60 flex flex-wrap items-center justify-between gap-3">
+              <div className="p-4 sm:p-5 border-b border-slate-200 bg-slate-50 flex flex-wrap items-center justify-between gap-3">
                 <div>
-                  <div className="flex items-center space-x-2 mb-1">
-                    <span className="text-xs font-bold font-mono px-2 py-0.5 rounded bg-blue-900/60 text-blue-300 border border-blue-500/30">
+                  <div className="flex items-center space-x-2 mb-1.5">
+                    <span className="text-xs font-bold font-mono px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">
                       {selectedMatch.suggested_common_code}
                     </span>
                     <StatusBadge status={selectedMatch.confidence_band} type="confidence" />
                     <StatusBadge status={selectedMatch.status} />
                   </div>
-                  <h3 className="text-sm font-bold text-white line-clamp-1">
+                  <h3 className="text-sm font-bold text-slate-900 line-clamp-1">
                     {selectedMatch.suggested_description}
                   </h3>
                 </div>
@@ -270,14 +270,14 @@ export default function MatchReview() {
                     <button
                       onClick={() => handleApprove(selectedMatch.id)}
                       disabled={isProcessing}
-                      className="flex items-center space-x-1.5 px-4 py-1.5 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 shadow-md shadow-emerald-600/20 active:scale-95 transition-all"
+                      className="flex items-center space-x-1.5 px-4 py-1.5 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 shadow-sm shadow-emerald-500/20 active:scale-95 transition-all"
                     >
                       <CheckCircle className="w-3.5 h-3.5" />
                       <span>Approve</span>
                     </button>
                     <button
                       onClick={() => setIsModalOpen(true)}
-                      className="px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors"
+                      className="px-3 py-1.5 rounded-xl text-xs font-semibold bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 transition-colors shadow-xs"
                     >
                       More Actions
                     </button>
@@ -299,7 +299,7 @@ export default function MatchReview() {
                 {/* Constituent CPSE Table */}
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <h4 className="text-xs font-bold text-slate-300 uppercase tracking-wider">
+                    <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider">
                       Constituent CPSE Master Items ({selectedMatch.members?.length || 0})
                     </h4>
                     <span className="text-[10px] text-slate-500">
@@ -307,35 +307,35 @@ export default function MatchReview() {
                     </span>
                   </div>
 
-                  <div className="border border-slate-800 rounded-xl overflow-hidden bg-slate-950/60">
+                  <div className="border border-slate-200 rounded-xl overflow-hidden bg-white shadow-xs">
                     <table className="w-full text-left border-collapse text-xs">
                       <thead>
-                        <tr className="border-b border-slate-800 bg-slate-900/60 text-slate-400 font-semibold text-[11px]">
+                        <tr className="border-b border-slate-200 bg-slate-50 text-slate-600 font-semibold text-[11px]">
                           <th className="py-2.5 px-3">CPSE / ERP</th>
                           <th className="py-2.5 px-3">Original Code</th>
                           <th className="py-2.5 px-3">Description</th>
                           <th className="py-2.5 px-3">Unit</th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-slate-800/60">
+                      <tbody className="divide-y divide-slate-100">
                         {selectedMatch.members?.map((m) => (
-                          <tr key={m.id} className="hover:bg-slate-800/30 transition-colors">
+                          <tr key={m.id} className="hover:bg-slate-50/70 transition-colors">
                             <td className="py-2.5 px-3">
-                              <span className="inline-block px-1.5 py-0.5 rounded bg-slate-800 text-blue-400 font-mono text-[10px] font-bold">
+                              <span className="inline-block px-1.5 py-0.5 rounded bg-slate-100 text-blue-700 font-mono text-[10px] font-bold">
                                 {m.cpse_code}
                               </span>
-                              <span className="text-[10px] text-slate-500 block">{m.erp_system}</span>
+                              <span className="text-[10px] text-slate-500 block font-medium">{m.erp_system}</span>
                             </td>
-                            <td className="py-2.5 px-3 font-mono font-bold text-amber-300 select-all">
+                            <td className="py-2.5 px-3 font-mono font-bold text-amber-800 select-all">
                               {m.original_code}
                             </td>
-                            <td className="py-2.5 px-3 text-slate-200">
-                              <div>{m.raw_description}</div>
+                            <td className="py-2.5 px-3 text-slate-800">
+                              <div className="font-medium">{m.raw_description}</div>
                               {m.raw_specification && (
-                                <span className="text-[10px] text-slate-400 block">{m.raw_specification}</span>
+                                <span className="text-[10px] text-slate-500 block">{m.raw_specification}</span>
                               )}
                             </td>
-                            <td className="py-2.5 px-3 font-semibold text-slate-400 uppercase">
+                            <td className="py-2.5 px-3 font-semibold text-slate-600 uppercase">
                               {m.unit_of_measure}
                             </td>
                           </tr>

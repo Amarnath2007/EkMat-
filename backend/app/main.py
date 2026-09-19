@@ -24,8 +24,8 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(na
 logger = logging.getLogger("ekmat.main")
 
 app = FastAPI(
-    title="EkMat API — AI-Driven Standardization and Harmonization of Material Codes Across CPSEs",
-    description="Smart India Hackathon 2026 (SIH26099) - Solution by Team Black Hats",
+    title="EkMat API — Material Standardization and Harmonization Platform for CPSEs",
+    description="Central Public Sector Enterprises Master Data Standardization and Entity Resolution Platform",
     version=settings.VERSION,
 )
 
@@ -131,9 +131,8 @@ def on_startup():
 @app.get("/")
 def root():
     return {
-        "platform": "EkMat SIH26099",
-        "description": "AI-Driven Standardization and Harmonization of Material Codes Across CPSEs",
-        "team": "Black Hats",
+        "platform": "EkMat Master Data Harmonization Platform",
+        "description": "Central Public Sector Enterprises Material Master Harmonization Platform",
         "status": "online",
         "docs_url": "/docs",
         "api_v1": "/api"

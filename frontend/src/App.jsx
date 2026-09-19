@@ -47,7 +47,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0b0f19] text-slate-100 flex flex-col font-sans selection:bg-blue-600 selection:text-white">
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans selection:bg-blue-600 selection:text-white">
       <Navbar
         activeTab={activeTab}
         setActiveTab={setActiveTab}
@@ -71,18 +71,18 @@ export default function App() {
         {activeTab === 'audit' && <AuditTrail />}
       </main>
 
-      {/* Government Hackathon Footer */}
-      <footer className="border-t border-slate-800/80 bg-slate-950/70 py-6 mt-12 text-center text-xs text-slate-500 space-y-2">
-        <div className="flex items-center justify-center space-x-2 text-slate-400 font-medium">
-          <span>Smart India Hackathon 2026 (SIH26099)</span>
+      {/* Enterprise Platform Footer */}
+      <footer className="border-t border-slate-200 bg-white py-6 mt-12 text-center text-xs text-slate-500 space-y-2">
+        <div className="flex items-center justify-center space-x-2 text-slate-600 font-medium">
+          <span>EkMat National Platform</span>
           <span>•</span>
-          <span className="text-slate-300">Team Black Hats</span>
+          <span className="text-slate-800 font-semibold">Central Public Sector Enterprises Master Data Harmonization</span>
           <span>•</span>
-          <span>Govt AI Standardization & Entity Resolution Architecture</span>
+          <span>AI Entity Resolution & Governance Portal</span>
         </div>
-        <p className="text-[11px] text-slate-600 max-w-2xl mx-auto">
-          Built with FastAPI, SBERT Sentence Transformers, RapidFuzz, PostgreSQL/pgvector, and React Vite.
-          Demonstrated on realistic synthetic CPSE master catalogs with verified ground-truth precision & recall.
+        <p className="text-[11px] text-slate-500 max-w-2xl mx-auto">
+          Unified Material Master Harmonization Platform for Central Public Sector Enterprises.
+          Multi-CPSE Traceability, Standardized Categorization, and Human-in-the-Loop Governance.
         </p>
       </footer>
 
